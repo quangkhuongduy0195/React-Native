@@ -8,51 +8,51 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   Text,
-  View, 
+  View,
   Animated,
   Easing
 } from 'react-native';
 
 export default class Animation extends Component {
-  
 
-        state = {
-            marginTopAni: new Animated.Value(1)
-        }
 
- 
-        componentDidMount() {
-            Animated.spring(                  
-              this.state.marginTopAni,        
-              {
-                toValue: 19,                   
-                duration: 2500,
-                delay: 5000,
-                speed: 1,
-                easing: Easing.bounce 
-              }
-            ).start();                        
-        }
+  state = {
+    marginTopAni: new Animated.Value(1)
+  }
 
-    render() {
-        const {marginTopAni} = this.state;
-        return (
-            <View style={styles.container}>
-              <Animated.View                 // Special animatable View
-                style={{
-                    marginTop: -50,
-                    marginLeft: -50,
-                    width: 100,
-                    height: 100,
-                    borderRadius: 50,
-                    backgroundColor: '#26C6DA',
-                    
-                    transform: [{scale: marginTopAni}]
-                }}
-                >
-            </Animated.View>
-            </View>
-          )
+
+  componentDidMount() {
+    Animated.spring(
+      this.state.marginTopAni,
+      {
+        toValue: 19,
+        duration: 2500,
+        delay: 5000,
+        speed: 1,
+        easing: Easing.bounce
+      }
+    ).start();
+  }
+
+  render() {
+    const { marginTopAni } = this.state;
+    return (
+      <View style={styles.container}>
+        <Animated.View                 // Special animatable View
+          style={{
+            marginTop: -50,
+            marginLeft: -50,
+            width: 100,
+            height: 100,
+            borderRadius: 50,
+            backgroundColor: '#26C6DA',
+
+            transform: [{ scale: marginTopAni }]
+          }}
+        >
+        </Animated.View>
+      </View>
+    )
   }
 }
 
