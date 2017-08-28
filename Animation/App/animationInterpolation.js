@@ -27,7 +27,7 @@ export default class Animation extends Component {
             Animated.timing(                  
               this.state.marginTopAni,        
               {
-                toValue: 1,
+                toValue: 2,
                 duration: 2500,
               }
             ).start();                        
@@ -44,9 +44,15 @@ export default class Animation extends Component {
                   borderRadius: 50,
                   backgroundColor: '#26C6DA',
                   marginTop: marginTopAni.interpolate({
-                    inputRange: [0, 0.2, 0.35, 0.45, 1],
+                    inputRange: [0, 0.5, 1, 1.45, 2],
                     outputRange: [0, 500, 100, 250,500]
-                  })
+                  }),
+                  transform:[{
+                    scale: marginTopAni.interpolate({
+                      inputRange: [0, 0.5, 1, 1.45, 2],
+                      outputRange: [0, 1, 0.5, 0.2,1]
+                    })
+                  }]
                 }}>
             </Animated.View>
             </View>
