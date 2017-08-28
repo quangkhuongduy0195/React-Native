@@ -1,0 +1,3 @@
+rootProject.name = 'TestLifeComponetNavigation'
+
+include ':app'
