@@ -8,7 +8,7 @@ import {
   AppRegistry,
 } from 'react-native';
 // import Animation from './App/App';
-import Animation from './App/animation';
+import Animation from './App/animationInterpolation';
 
 
 AppRegistry.registerComponent('Animation', () => Animation);

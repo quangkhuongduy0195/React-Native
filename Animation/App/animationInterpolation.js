@@ -16,18 +16,19 @@ import {
 export default class Animation extends Component {
   
 
-        state = {
-            marginTopAni: new Animated.Value(1)
-        }
+        // constructor(props){
+        //   super(props);
+          state = {
+            marginTopAni: new Animated.Value(0)
+          }
+        // }
  
         componentDidMount() {
-            Animated.spring(                  
+            Animated.timing(                  
               this.state.marginTopAni,        
               {
-                toValue: 3,
-                bounciness: 10,
-                speed: 5,
-                useNativeDriver: true
+                toValue: 1,
+                duration: 2500,
               }
             ).start();                        
         }
@@ -36,16 +37,17 @@ export default class Animation extends Component {
         const {marginTopAni} = this.state;
         return (
             <View style={styles.container}>
-              <Animated.View                 // Special animatable View
+              <Animated.View             
                 style={{
-                    width: 100,
-                    height: 100,
-                    borderRadius: 50,
-                    backgroundColor: '#26C6DA',
-                    
-                    transform: [{scale: marginTopAni}]
-                }}
-                >
+                  width: 100,
+                  height: 100,
+                  borderRadius: 50,
+                  backgroundColor: '#26C6DA',
+                  marginTop: marginTopAni.interpolate({
+                    inputRange: [0, 0.2, 0.35, 0.45, 1],
+                    outputRange: [0, 500, 100, 250,500]
+                  })
+                }}>
             </Animated.View>
             </View>
           )
@@ -55,7 +57,7 @@ export default class Animation extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    // justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
